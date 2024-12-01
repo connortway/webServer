@@ -48,7 +48,7 @@ app.delete('/items/:id', async (req, res) => {
     try {
         const client = new Client(clientConfig);
         await client.connect();
-        const result = await client.query('DELETE FROM items WHERE id = $1 RETURNING *;', [id]);
+        const result = await client.query('DELETE FROM nasdq WHERE id = $1 RETURNING *;', [id]);
       if (result.rowCount === 0) {
         res.status(404).send('Item not found');
       } else {
